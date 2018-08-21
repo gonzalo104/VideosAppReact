@@ -1,18 +1,21 @@
 import React from 'react';
 import {TouchableHighlight, TouchableOpacity , TouchableWithoutFeedback, StyleSheet,Text} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+const playIcon  = (<Icon name="play" size={30} color="green" />)
+const pauseIcon = (<Icon name="pause" size={30} color="green" />)
 
 const PlayPause = (props) =>{
     return(
         <TouchableHighlight
             onPress       = {props.onPress}
-            style         = {styles.container}
-            underlayColor = "red"
+            underlayColor = "rgba(255,255,255,.1)"
             hitSlop       = {{left:5,top:5,bottom:5,right:5}}
         >
         {
-            props.paused ? <Text style={styles.button}>Play</Text>: <Text style={styles.button}>Pause</Text>
-        }                        
-        </TouchableHighlight>
+            props.paused ? playIcon: pauseIcon
+        }    
+        </TouchableHighlight>                     
     )
 }
 

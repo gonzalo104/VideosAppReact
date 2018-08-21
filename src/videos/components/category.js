@@ -7,7 +7,7 @@ const Category = (props) =>{
         source = {{uri: props.background_image}}
         style  = {styles.wrapper}
         >
-            <Text style={styles.genre}>{props.genres[0]}</Text>
+            <Text style={styles.genre}>{props.genres ? props.genres[0] : "General"}</Text>
         </ImageBackground>
     )
 }
