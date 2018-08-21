@@ -19,3 +19,5 @@ let store     = createStore(persistedReducer)
 let persistor = persistStore(store)
 
 export {store, persistor};
+
+ 
