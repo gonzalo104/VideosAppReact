@@ -4,7 +4,7 @@ import {View,Text,Image,StyleSheet,SafeAreaView} from 'react-native';
 function Header(props){
     return(
         <View>
-            <SafeAreaView>
+            <SafeAreaView style={styles.statusBar}>
 
                 <View style={styles.container}>
                     <Image source={require('../../../assets/logo.png')} style={styles.logo}/>
@@ -24,6 +24,9 @@ const styles = StyleSheet.create({
         width     : 80,
         height    : 26,
         resizeMode: 'contain'
+    },
+    statusBar:{
+        backgroundColor: 'white',
     },
     container:{        
         paddingVertical  : 10,

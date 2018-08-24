@@ -1,7 +1,8 @@
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
-import reducer from './reducers/videos';
+import reducer from './reducers/index';
 import storage from 'redux-persist/lib/storage';
+import { createReactNavigationReduxMiddleware } from 'react-navigation-redux-helpers';
 
 /*const store = createStore(reducer, {    
     suggestionList: [],
@@ -10,12 +11,20 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['selectedMovie']
+    blacklist: ['navigation']
   }
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
-let store     = createStore(persistedReducer)
+const navigationMiddleware = createReactNavigationReduxMiddleware(
+    'root',
+    state => state.navigation
+)
+
+let store     = createStore(
+    persistedReducer, 
+    applyMiddleware(navigationMiddleware)
+)
 let persistor = persistStore(store)
 
 export {store, persistor};

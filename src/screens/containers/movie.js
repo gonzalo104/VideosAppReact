@@ -8,9 +8,18 @@ import {connect} from 'react-redux';
 import {Animated} from 'react-native';
 class Movie extends Component {
 
-
     state = {
         opacity: new Animated.Value(0),
+    }
+
+    static navigationOptions = ({ navigation }) => {
+        return {
+            header: (
+                <Header>
+                    <Close onPress={() => {navigation.goBack()}}/>  
+                </Header> 
+            )
+        }
     }
 
 
@@ -38,10 +47,7 @@ class Movie extends Component {
         <Animated.View
         style = {{flex:1, opacity: this.state.opacity,}}
         >
-          <MovieLayout>
-             <Header>
-               <Close onPress={this.closeVideo}/>  
-             </Header>   
+          <MovieLayout>             
              <Player/>  
              <Details {...this.props.movie}/>
           </MovieLayout>
@@ -52,7 +58,7 @@ class Movie extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        movie: state.selectedMovie
+        movie: state.videos.selectedMovie
     }
 }
 
