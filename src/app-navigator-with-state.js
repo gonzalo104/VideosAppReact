@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AppNavigator from './app-navigator';
 import {
-  reduxifyNavigator,
+  reduxifyNavigator,  
 } from 'react-navigation-redux-helpers';
 
 const ReduxifyApp = reduxifyNavigator(AppNavigator, 'root');

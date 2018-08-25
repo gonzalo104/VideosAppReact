@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Text } from 'react-native';
+import { Text,StatusBar } from 'react-native';
 import Header from '../../screens/components/header';
 import CategoryList from '../../videos/containers/category-list.js';
 import SuggestionList from '../../videos/containers/suggestion-list';
@@ -12,11 +12,19 @@ class Home extends Component {
 
     static navigationOptions = () => {
         return {
-            header: Header
+            header: Header,
+            title : 'Inicio'
         }
     }
 
     async componentDidMount(){
+
+      this.focus = this.props.navigation.addListener('didFocus', () => {
+            StatusBar.setBarStyle('dark-content');
+            StatusBar.setBackgroundColor('white');   
+          });
+
+
         const suggestionList = await API.getSuggestion(10);
         this.props.dispatch({
           type   : 'SET_CATEGORY_LIST',
@@ -33,6 +41,10 @@ class Home extends Component {
           }
         });
     
+      }
+
+      componentWillUnmount(){
+        this.focus.remove();
       }
 
 
