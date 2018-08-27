@@ -12,7 +12,9 @@ class Lucky extends Component {
   static navigationOptions = () => {
     return {        
         title     : 'Voy a tener suerte',
-        tabBarIcon: <Icon icon="⭐"/>
+        tabBarIcon: <Icon icon="⭐"/>,
+        drawerIcon: <Icon icon="⭐"/>,
+
     }
 }
   render() {
